@@ -18,13 +18,13 @@ class Hero{
 class Team:List<Hero>{
 	string name;
 	public static Team Random(){
-		Team result=new Team()
+		Team result=new Team();
 		result.Add(Hero.Random());
 		result.Add(Hero.Random());
 		result.Add(Hero.Random());
 		result.Add(Hero.Random());
 		result.Add(Hero.Random());
-		return Team;
+		return result;
 	}
 }
 public class Axis{
@@ -36,6 +36,12 @@ public class Axis{
 }
 class Teams:List<(Axis.TypeAxis,Team)>{
 
+	
+	public static Teams From(List<(Axis.TypeAxis,Team)> list){
+		Teams result=new Teams();
+		result.AddRange(list);
+		return result; 
+	}
 }
 
 class Battle{
@@ -47,8 +53,9 @@ class Battle{
 	}
 	IEnumerable<FrameUpdate> Start(){
 		int frame=0;
-		
-		yield return new FrameUpdate();
+		while(true){
+			yield return new FrameUpdate(frame++);
+		}
 		yield break;
 	}
 }

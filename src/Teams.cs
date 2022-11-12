@@ -7,9 +7,25 @@ class Hero{
 
 	string name;
 	Action<TimeSpan> update;
+	public static Hero Random(){
+		Random r=new Random();
+		return new Hero(){
+			HP=r.Next(80,120)
+		};
+	
+	}
 }
 class Team:List<Hero>{
 	string name;
+	public static Team Random(){
+		Team result=new Team()
+		result.Add(Hero.Random());
+		result.Add(Hero.Random());
+		result.Add(Hero.Random());
+		result.Add(Hero.Random());
+		result.Add(Hero.Random());
+		return Team;
+	}
 }
 public class Axis{
 	public enum TypeAxis{
@@ -30,8 +46,15 @@ class Battle{
 		};
 	}
 	IEnumerable<FrameUpdate> Start(){
+		int frame=0;
+		
+		yield return new FrameUpdate();
 		yield break;
 	}
 }
 
-class FrameUpdate{}
+class FrameUpdate{
+
+
+
+}
